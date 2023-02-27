@@ -368,3 +368,41 @@ Review the code below for an example of .babelrc if you were to use @babel/prese
   "presets": ["@babel/preset-react", "@babel/preset-env"]
 }
 ```
+
+### ReactDOM Render
+
+Write a basic ReactDOM.render in your entry file.
+
+Review the code below for an example of implementing ReactDOM.render
+
+import React from 'react';
+import ReactDOM from 'react-dom';
+
+```js
+ReactDOM.render(
+  <div>Hello, world!</div>,
+  document.getElementById('app') // make sure this is the same as the id of the div in your index.html
+)
+```
+
+### Start Script
+
+In your package.json, set up an npm start command (or some combination of other commands) to build your client javascript and run your server.
+
+You may choose to have a separate scripts for building your client application and for starting your server, or do both with the same command - it is up to you. (webpack-dev-server does both, out of the box!)
+
+Below is an example where we run webpack in --watch mode in the background, and simultaneously start a server with nodemon (in server.js).
+
+```json
+"start": "node server",
+"start-dev": "webpack -w & nodemon server"
+```
+
+### Liftoff!
+
+Run npm start or npm run start-dev, depending on your naming convention! If everything worked, your React application (app) should rendered into the DOM when you navigate to localhost on the port your app is running from.
+
+If something went wrong...here are some suggestions to get back on course:
+
+Check all of the previous steps - did you forget anything?
+Check both the server console (your terminal) where your webpack and server processes are running, and your client console (Chrome dev tools), and check for error messages. Read the errors
