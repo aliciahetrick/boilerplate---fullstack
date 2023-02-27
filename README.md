@@ -465,3 +465,67 @@ ReactDOM.render(
 ### Ready to go
 
 Now you're ready to go, and the rest is up to you! Define the action types, action creators and sub-reducers that your redux app will use to calculate the state. Use the connect function from react-redux to obtain slices of state and the dispatch method throughout your app.
+
+## CSS
+
+### Install
+
+We've seen how we can use webpack to build JavaScript files. However, webpack can do even more - did you know that it can build your css files into a single css file? It totally can! What's more, it can automatically create and inject a <style> tag into the DOM with all of your styles! This means you can write your css, import it as if it were a JavaScript module, and then webpack will take care of the rest!
+To get started, using the terminal, install the tools you'll need:
+
+npm install --save-dev style-loader css-loader
+
+### Add to Webpack Config
+
+Add the new loaders to your webpack config. You can check out the webpack/sass documentationLinks to an external site. if you want to try this part on your own. Otherwise, an example is below.
+
+```js
+module.exports = {
+  entry: './client/index.js',
+  output: {
+    path: __dirname,
+    filename: './public/bundle.js',
+  },
+  devtool: 'source-map',
+  module: {
+    rules: [
+      {
+        test: /\.jsx?$/,
+        exclude: /(node_modules|bower_components)/,
+        loader: 'babel-loader',
+        options: {
+          presets: ['react', 'es2015'],
+        },
+      },
+      // use the style-loader/css-loader combos for anything matching the .css extension
+      {
+        test: /\.css$/,
+        use: ['style-loader', 'css-loader'],
+      },
+    ],
+  },
+}
+```
+
+### Create Entry Point
+
+Create an initial css file (like index.css) for your css styles.
+
+### Import into JS
+
+Now here's the cool part. In your browser JavaScript, you can import './path/to/index.css' into a JavaScript file - webpack will then include it in the build path. However, because we've told webpack to build any files ending with .css using the style-related loaders, it will transform our css files into a file that it loads directly onto the DOM from our bundle.js. If you're wondering where to do this import -- consider doing it in the same entry point you use for your JavaScript ;)
+
+Review the example code below:
+
+```js
+// assuming our index.scss is in the same directory as our index.js
+import './index.css'
+
+import React from 'react'
+import ReactDOM from 'react-dom'
+
+ReactDOM.render(
+  <div>Hello world!</div>,
+  document.getElementById('app') // make sure this is the same as the id of the div in your index.html
+)
+```
