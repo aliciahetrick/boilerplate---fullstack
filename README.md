@@ -310,3 +310,11 @@ In your terminal use the following commands:
 npm install --save-dev webpack webpack-cli @babel/core babel-loader @babel/preset-react
 
 If you want to be proactive in making sure your code is safe for older browsers, you may also install @babel/preset-env.
+
+### Regular Dependencies
+
+npm install --save your regular dependencies.
+
+In your terminal use the following commands:
+
+npm install --save react react-dom react-router-dom
