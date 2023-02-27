@@ -327,3 +327,44 @@ Decide on an 'entry' file and an 'output' file for your webpack pipeline.
 Your entry file might be something simple like an index.js, app/main.js, client/app.js or browser/index.js.
 
 Your output file will be created by webpack. You don't need to actually create it yet - just decide where you want it to live. This could be in the root of your app, or a public folder - it is up to you.
+
+### Webpack Config
+
+Write your webpack.config.js.
+
+Review and example of the code below:
+
+```js
+module.exports = {
+  entry: ['./client/index.js'],
+  output: {
+    path: __dirname,
+    filename: './public/bundle.js',
+  },
+  devtool: 'source-map',
+  module: {
+    rules: [
+      {
+        test: /\.jsx?$/,
+        exclude: /node_modules/,
+        loader: 'babel-loader',
+        options: {
+          presets: ['@babel/preset-react'],
+        },
+      },
+    ],
+  },
+}
+```
+
+### .babelrc
+
+By setting babel-loader in your webpack config, you're teaching webpack to use babel. However, we also need to tell babel how to parse our code. We do this with another dot-file called .babelrc! In your root project directory, make a file called .babelrc and configure it with the babel-presets you installed.
+
+Review the code below for an example of .babelrc if you were to use @babel/preset-react and @babel/preset-env:
+
+```js
+{
+  "presets": ["@babel/preset-react", "@babel/preset-env"]
+}
+```
