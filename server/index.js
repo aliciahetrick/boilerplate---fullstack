@@ -2,7 +2,6 @@ const express = require('express')
 const app = express()
 const morgan = require('morgan')
 const bodyParser = require('body-parser')
-app.use('/api', require('./routes'))
 
 app.use(express.static(path.join(__dirname, '..', 'public')))
 app.use(morgan('dev'))

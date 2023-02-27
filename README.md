@@ -301,3 +301,12 @@ app.use(function (err, req, res, next) {
   res.status(err.status || 500).send(err.message || 'Internal server error.')
 })
 ```
+
+### Dev dependencies
+
+npm install --save-dev your DEV dependencies
+
+In your terminal use the following commands:
+npm install --save-dev webpack webpack-cli @babel/core babel-loader @babel/preset-react
+
+If you want to be proactive in making sure your code is safe for older browsers, you may also install @babel/preset-env.
