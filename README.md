@@ -406,3 +406,15 @@ If something went wrong...here are some suggestions to get back on course:
 
 Check all of the previous steps - did you forget anything?
 Check both the server console (your terminal) where your webpack and server processes are running, and your client console (Chrome dev tools), and check for error messages. Read the errors
+
+## Redux
+
+### Install
+
+npm install the additional libraries you'll need.
+
+In your terminal use the following commands:
+
+npm install --save redux react-redux
+
+You may also want the following common middlewares which can also be installed using the terminal: npm install --save redux-thunk redux-logger
