@@ -271,3 +271,17 @@ router.use(function (req, res, next) {
 
 module.exports = router
 ```
+
+### Send Index HTML
+
+Because we generally want to build single-page applications (or SPAs), our server should send its index.html for any requests that don't match one of our API routes.
+
+Make sure this is after all of your routes in your server entry file!
+
+Review the example code below:
+
+```js
+app.get('*', function (req, res) {
+  res.sendFile(path.join(__dirname, './path/to/index.html');
+});
+```
