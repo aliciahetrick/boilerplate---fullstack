@@ -124,3 +124,55 @@ my-project/
 ```
 
 Of course, you're going to want to install express too. In your terminal use the following command: npm install --save express
+
+### Create an App
+
+Create your app with express.
+
+Review the code below for an example of how to use express in your app
+
+```js
+const express = require('express')
+const app = express()
+```
+
+### Logging Middleware
+
+Having server logs helps with debugging (even in production environments). Install and hook up a logger like morgan, express-logger, or Fullstack's own volleyball.
+
+For example, if we choose to use morgan:
+
+Run the following command in your terminal: npm install --save morgan
+
+Review the code below for an example of how to use morgan in your app
+
+```js
+const morgan = require('morgan')
+app.use(morgan('dev'))
+```
+
+### Statics Middleware
+
+Once your browser gets your index.html, it often needs to request static assets from your server - these include javascript files, css files, and images. Many developers organize this content by putting it into a public folder (but this is of course up to you).
+
+Serve 'em up with some static middleware!
+
+Review the code below for an example of how to serve static middleware
+
+```js
+app.use(express.static(path.join(__dirname, './path/to/static/assets')))
+```
+
+### Parsing Middleware
+
+Requests frequently contain a body - if you want to use it in req.body, then you'll need some middleware to parse the body.
+
+In your terminal run the following command: npm install --save body-parser.
+
+Review the code below for an example of how to use body-parsing middleware in your app
+
+```js
+const bodyParser = require('body-parser')
+app.use(bodyParser.json())
+app.use(bodyParser.urlencoded({ extended: true }))
+```
