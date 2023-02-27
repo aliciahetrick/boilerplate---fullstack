@@ -445,3 +445,23 @@ const store = createStore(yourReducer, applyMiddleware(thunkMiddleware, createLo
 
 export default store
 ```
+
+### Provider
+
+In the root of your React app, import your store and import the Provider component from react-redux. Plug it in at the top of your app structure.
+
+Review the code below for an example of how to import your store using a Provider:
+
+```js
+import { Provider } from 'react-redux'
+import store from './yourStore'
+
+ReactDOM.render(
+  <Provider store={store}>{/* rest of your app goes here! */}</Provider>,
+  document.getElementById('yourApp')
+)
+```
+
+### Ready to go
+
+Now you're ready to go, and the rest is up to you! Define the action types, action creators and sub-reducers that your redux app will use to calculate the state. Use the connect function from react-redux to obtain slices of state and the dispatch method throughout your app.
