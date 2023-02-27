@@ -318,3 +318,12 @@ npm install --save your regular dependencies.
 In your terminal use the following commands:
 
 npm install --save react react-dom react-router-dom
+
+### Index JS
+
+Index JS
+Decide on an 'entry' file and an 'output' file for your webpack pipeline.
+
+Your entry file might be something simple like an index.js, app/main.js, client/app.js or browser/index.js.
+
+Your output file will be created by webpack. You don't need to actually create it yet - just decide where you want it to live. This could be in the root of your app, or a public folder - it is up to you.
