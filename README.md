@@ -285,3 +285,19 @@ app.get('*', function (req, res) {
   res.sendFile(path.join(__dirname, './path/to/index.html');
 });
 ```
+
+### Handle 500 Errors
+
+If anything got this far, then it seems like we messed up. Let's catch those 500 errors and log them out. We'll thank ourselves later when we can read our server logs and debug.
+
+Make sure this is at the very end of your server entry file!
+
+Review the example code below:
+
+```js
+app.use(function (err, req, res, next) {
+  console.error(err)
+  console.error(err.stack)
+  res.status(err.status || 500).send(err.message || 'Internal server error.')
+})
+```
