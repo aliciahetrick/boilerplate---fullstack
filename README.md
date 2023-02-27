@@ -418,3 +418,30 @@ In your terminal use the following commands:
 npm install --save redux react-redux
 
 You may also want the following common middlewares which can also be installed using the terminal: npm install --save redux-thunk redux-logger
+
+### Reducer
+
+Review the code below for an example of a minimal reducer :
+
+```js
+function dummyReducer(state = {}, action) {
+  return state
+}
+```
+
+### Store
+
+Create your store. Set up any middleware that you want as well.
+
+Review the code below for an example of a redux store:
+
+```js
+import { createStore, applyMiddleware } from 'redux'
+import yourReducer from './yourReducer'
+import thunkMiddleware from 'redux-thunk'
+import { createLogger } from 'redux-logger'
+
+const store = createStore(yourReducer, applyMiddleware(thunkMiddleware, createLogger()))
+
+export default store
+```
