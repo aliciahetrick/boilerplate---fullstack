@@ -245,3 +245,29 @@ module.exports = router
 ```
 
 Note that the advantage here is that instead of writing out router.get('/api/puppies') and so forth for each route, we can just write router.get('/'), because of the way we've composed our middleware together.
+
+### Handle 404s
+
+What if a user requests an API route that doesn't exist? For example, if we're serving up puppies, kittens and users, what if a user asks for /api/sloths?
+
+Give 'em the 'ol 404!
+
+Using our apiRoutes/index.js from before, the code below examples the use of 404 errors:
+
+```js
+// routes/index.js
+const router = require('express').Router()
+
+router.use('/users', require('./users')) // Users? Check.
+router.use('/puppies', require('./puppies')) // Puppies? Check.
+router.use('/kittens', require('./kittens')) // Kittens? Check.
+
+// Sloths?!?! Get outta town!
+router.use(function (req, res, next) {
+  const err = new Error('Not found.')
+  err.status = 404
+  next(err)
+})
+
+module.exports = router
+```
